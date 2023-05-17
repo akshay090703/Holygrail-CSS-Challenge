@@ -1,0 +1,264 @@
+    /* General CSS */
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-family: 'Dosis', sans-serif;
+        font-size: 16px;
+        color: #1e4040;
+    }
+
+    a {
+        color: #71d99e;
+    }
+
+    header,
+    footer {
+        background-color: #1e4040;
+        color: #71d99e;
+    }
+    h1,h2,h3{
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+    P{
+        margin-bottom: 15px;
+    }
+    main, aside{
+        padding: 20px 5%;
+    }
+    img{
+        border-radius: 5px;
+        box-shadow: 1px 2px 3px 1px rgba(0, 0, 0, 0.2);
+        max-width: 100%;
+    }
+
+    /* CSS Grid */
+    .outer-grid {
+        display: grid;
+        height: 100vh;
+        grid-template-rows: 70px 1fr;
+        grid-template-columns: 88px 1fr;
+        grid-template-areas:
+            "alias-header alias-header"
+            "alias-innergrid alias-innergrid";
+    }
+
+
+    .outer-grid-expanded {
+        grid-template-areas:
+            "alias-header alias-header"
+            "alias-nav alias-innergrid";
+    }
+
+    header {
+        grid-area: alias-header;
+    }
+
+    .hide-nav {
+        display: none;
+    }
+
+    nav {
+        grid-area: alias-nav;
+    }
+
+    /* CsS inner grid styles */
+    .inner-grid {
+        overflow-y: scroll;
+        display: grid;
+        grid-area: alias-innergrid;
+        grid-template-rows: 1fr auto 65px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "alias-main alias-main"
+            "alias-aside alias-aside"
+            "alias-footer alias-footer";
+    }
+
+    main {
+        grid-area: alias-main;
+    }
+
+    aside {
+        grid-area: alias-aside;
+        /* background-color: rgba(255, 122, 0, 0.4); */
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+        grid-area: alias-footer;
+    }
+
+    /* Header styles */
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .left-header {
+        display: flex;
+        align-items: center;
+    }
+
+    .fa-bars {
+        margin-right: 15px;
+        font-size: 1.7rem;
+    }
+
+    .fa-bars:hover {
+        cursor: pointer;
+        opacity: 0.75;
+        transform: scale(1.1);
+    }
+
+    .fa-laptop-code {
+        font-size: 2rem;
+    }
+
+    .right-header {
+        display: flex;
+    }
+
+    .header-link {
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /* Nav-link styles */
+    nav {
+        padding-top: 20px;
+        border-right: 1px soid rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15px;
+    }
+
+    .nav-link a {
+        color: #1e4040;
+        text-decoration: none;
+    }
+
+    .nav-link a:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+    /* Footer styles */
+    footer p{
+        color: white;
+        margin: 0;
+    }
+    footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Collage Css */
+    .collage{
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 40px 1fr 40px 1fr;
+        height: 550px;
+        align-items: center;
+    }
+    .collage-1{
+        grid-column-start: 1;
+        grid-column-end: 3;
+        z-index: 1;
+        transform: rotate(-3deg);
+    }
+    .collage-2{
+        grid-column-start: 2;
+        grid-column-end: 5;
+        z-index: 2;
+        box-shadow: 2px 4px 10px 2px rgba(0, 0, 0, 0.5);
+    }
+    .collage-3{
+        grid-column-start: 4;
+        grid-column-end: 6;
+        z-index: 1;
+        transform: rotate(3deg);
+    }
+    .collage *{
+        grid-row-start: 1;
+        grid-row-end: 2;
+    }
+
+    /* Breakpoints */
+    @media only screen and (min-width: 576px) {
+        nav {
+            display: block !important;
+        }
+
+        .outer-grid {
+            grid-template-areas:
+                "alias-header alias-header"
+                "alias-nav alias-innergrid";
+        }
+
+        .fa-bars {
+            display: none;
+        }
+    }
+
+    @media only screen and (min-width: 992px) {
+        .inner-grid {
+            grid-template-rows: 1fr 65px;
+            grid-template-columns: minmax(auto, 700px) 1fr;
+            grid-template-areas:
+                "alias-main alias-aside"
+                "alias-footer alias-footer";
+        }
+        aside{
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    @media only screen and (min-width: 1440px) {
+
+        .outer-grid {
+            grid-template-columns: 1fr 950px 1fr;
+            grid-template-areas:
+                "alias-header alias-header alias-header"
+                "alias-nav alias-innergrid alias-innergrid";
+        }
+
+        header {
+            display: grid;
+            grid-template-columns: 1fr 950px 1fr;
+            grid-template-areas:
+                "alias-lh . alias-rh";
+        }
+
+        .left-header {
+            grid-area: alias-lh;
+            justify-self: end;
+        }
+
+        .right-header {
+            grid-area: alias-rh;
+            justify-self: start;
+        }
+
+        nav {
+            display: flex !important;
+            flex-direction: column;
+            align-items: flex-end;
+            padding-right: 17px;
+        }
+    }
